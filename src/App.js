@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+
+// Import images
+// import cuteImage from "./cute-image.jpg";
+import grumpyImage from "./grumpy-image.jpg";
 
 function App() {
+  const [answer, setAnswer] = useState("");
+
+  const handleYes = () => {
+    setAnswer("yes");
+  };
+
+  const handleNo = () => {
+    setAnswer("no");
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {answer === "" && (
+        <div>
+          <h1>Do you wanna be my valentine?</h1>
+          <button onClick={handleYes}>Yes</button>
+          <button onClick={handleNo}>No</button>
+        </div>
+      )}
+
+      {answer === "yes" && (
+        <div className="yes-background">
+          <div className="centered-text">I'm happy to be your valentine!</div>
+        </div>
+      )}
+
+      {answer === "no" && (
+        <div>
+          <img src={grumpyImage} alt="Grumpy" />
+          <p>Wrong answer!</p>
+          <button onClick={handleYes}>Yes</button>
+        </div>
+      )}
     </div>
   );
 }
