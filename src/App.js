@@ -16,6 +16,10 @@ function App() {
     setAnswer("no");
   };
 
+  const handleBegin = () => {
+    setAnswer("");
+  };
+
   return (
     <div className="App">
       {answer === "" && (
@@ -27,7 +31,7 @@ function App() {
       )}
 
       {answer === "yes" && (
-        <div className="yes-background">
+        <div className="yes-background" onClick={handleBegin}>
           <div className="centered-text">I'm happy to be your valentine!</div>
         </div>
       )}
@@ -35,7 +39,7 @@ function App() {
       {answer === "no" && (
         <div>
           <img src={grumpyImage} alt="Grumpy" />
-          <p>Wrong answer!</p>
+          <p>Wrong answer! Try again:</p>
           <button onClick={handleYes}>Yes</button>
         </div>
       )}
